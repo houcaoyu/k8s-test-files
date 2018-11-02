@@ -1,0 +1,4 @@
+FROM centos
+MAINTAINER houcaoyu
+ADD dist /usr/local/src
+RUN /bin/bash
