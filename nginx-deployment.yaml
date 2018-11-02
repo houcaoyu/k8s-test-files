@@ -17,9 +17,9 @@ spec:
         image: nginx:1.8
         ports:
         - containerPort: 80
-        volumnMounts:
+        volumeMounts:
         - mountPath: "/usr/share/nginx/html"
           name: nginx-vol
-      volumns:
+      volumes:
       - name: nginx-vol
         emptyDir: {}
