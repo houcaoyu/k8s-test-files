@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      initContainers:
+      - image: registry-vpc.cn-qingdao.aliyuncs.com/houcaoyu/sidecar-dist-example:v1.0
+        name: src
+        command: ["cp","/usr/local/src/dist/*","/app"]
+        volumeMounts:
+        - mountPath: "/app"
+          name: nginx-vol
+      containers:
+      - name: nginx
+        image: nginx:1.8
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: nginx-vol
+      volumes:
+      - name: nginx-vol
+        emptyDir: {}
