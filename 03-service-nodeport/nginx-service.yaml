@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-service
+spec:
+  type: NodePort //指定service类型
+  selector:
+    app: nginx
+  ports:
+    - port: 80 // 供集群中其它container访问端口
+      targetPort: 80 //转向后端pod中container暴露的端口
+      nodePort: 9000 //节点暴露的端口
