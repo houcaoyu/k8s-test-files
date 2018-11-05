@@ -1,0 +1,1 @@
+简单的Deployment，部署两台nginx服务
