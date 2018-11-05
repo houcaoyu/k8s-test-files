@@ -12,13 +12,13 @@ spec:
       labels:
         app: nginx
     spec:
-      initContainers:
-      - image: registry-vpc.cn-qingdao.aliyuncs.com/houcaoyu/sidecar-dist-example:v1.0
-        name: src
-        command: ["cp","/usr/local/src/*","/app"]
-        volumeMounts:
-        - mountPath: "/app"
-          name: nginx-vol
+#       initContainers:
+#       - image: registry-vpc.cn-qingdao.aliyuncs.com/houcaoyu/sidecar-dist-example:v1.0
+#        name: src
+#         command: ["cp","/usr/local/src/*","/app"]
+#         volumeMounts:
+#         - mountPath: "/app"
+#           name: nginx-vol
       containers:
       - name: nginx
         image: nginx:1.8
